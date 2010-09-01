@@ -36,14 +36,14 @@ namespace Dojo
         public void PointsA_Player_A_Starts_With_Zero_Points()
         {
             TennisGame game = new TennisGame();
-            Assert.AreEqual(0, game.PointsA);
+            Assert.AreEqual(TennisScore.Love, game.PointsA);
         }
 
         [Test]
         public void PointsB_Player_B_Starts_With_Zero_Points()
         {
             TennisGame game = new TennisGame();
-            Assert.AreEqual(0, game.PointsB);
+            Assert.AreEqual(TennisScore.Love, game.PointsB);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace Dojo
 
             game.Score(TennisPlayer.PlayerB);
 
-            Assert.That(game.PointsB, Is.EqualTo(15));
+            Assert.That(game.PointsB, Is.EqualTo(TennisScore.Fifteen));
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace Dojo
 
             game.Score(TennisPlayer.PlayerA);
 
-            Assert.That(game.PointsA, Is.EqualTo(15));
+            Assert.That(game.PointsA, Is.EqualTo(TennisScore.Fifteen));
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace Dojo
             game.Score(TennisPlayer.PlayerA);
 
 
-            Assert.That(game.PointsA, Is.EqualTo(30));
+            Assert.That(game.PointsA, Is.EqualTo(TennisScore.Thirty));
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace Dojo
             game.Score(TennisPlayer.PlayerA);
             game.Score(TennisPlayer.PlayerA);
 
-            Assert.That(game.PointsA, Is.EqualTo(40));
+            Assert.That(game.PointsA, Is.EqualTo(TennisScore.Forty));
         }
     }
     public enum TennisPlayer
@@ -96,25 +96,34 @@ namespace Dojo
         PlayerB
     }
 
+    public enum TennisScore
+    {
+        Love,
+        Fifteen,
+        Thirty,
+        Forty,
+        Advantage,
+        Game
+    }
+
     public class TennisGame
     {
         public bool IsGameOver { get; set; }
 
-        public int PointsB { get; set; }
-
-        public int PointsA { get; set; }
+        public TennisScore PointsB { get; set; }
+        public TennisScore PointsA { get; set; }
 
         public void Score(TennisPlayer player)
         {
-            if (this.PointsA == 40)
+            if (this.PointsA == TennisScore.Forty)
                 this.IsGameOver = true;
 
-            if (this.PointsA == 30)
-                this.PointsA = 40;
+            if (this.PointsA == TennisScore.Thirty)
+                this.PointsA = TennisScore.Forty;
             else
-            this.PointsA += 15;
+            this.PointsA += 1;
 
-            this.PointsB += 15;
+            this.PointsB += 1;
         }
     }
 }

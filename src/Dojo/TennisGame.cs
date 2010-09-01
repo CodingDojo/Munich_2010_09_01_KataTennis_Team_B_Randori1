@@ -68,6 +68,7 @@ namespace Dojo
 
         public void Score(TennisPlayer player)
         {
+            this.PointsA += 15;
             this.PointsB += 15;
         }
     }

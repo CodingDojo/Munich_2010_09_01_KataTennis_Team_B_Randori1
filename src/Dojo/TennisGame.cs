@@ -90,17 +90,18 @@ namespace Dojo
             Assert.That(game.PointsA, Is.EqualTo(TennisScore.Forty));
         }
 
-        [Test]
-        public void When_PlayerA_scores_4times_PointsA_Equals_Game()
+        [TestCase(TennisPlayer.PlayerA)]
+        [TestCase(TennisPlayer.PlayerB)]
+        public void When_PlayerA_scores_4times_PointsA_Equals_Game(TennisPlayer player)
         {
             TennisGame game = new TennisGame();
 
-            game.Score(TennisPlayer.PlayerA);
-            game.Score(TennisPlayer.PlayerA);
-            game.Score(TennisPlayer.PlayerA);
-            game.Score(TennisPlayer.PlayerA);
+            game.Score(player);
+            game.Score(player);
+            game.Score(player);
+            game.Score(player);
 
-            Assert.That(game.PointsA, Is.EqualTo(TennisScore.Game));
+            Assert.That(game.Points(player), Is.EqualTo(TennisScore.Game));
         }
 
         [Test]
@@ -121,11 +122,9 @@ namespace Dojo
             Assert.That(game.PointsA, Is.EqualTo(TennisScore.Advantage));
         }
 
-        
-
         [TestCase(TennisPlayer.PlayerA)]
         [TestCase(TennisPlayer.PlayerB)]
-        public void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer player)
+        public void When_Players_Are_In_Deuce_One_Player_Scores(TennisPlayer player)
         {
             TennisGame game = new TennisGame();
 

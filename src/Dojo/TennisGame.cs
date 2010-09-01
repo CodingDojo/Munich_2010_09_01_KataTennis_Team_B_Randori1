@@ -19,6 +19,20 @@ namespace Dojo
         }
 
         [Test]
+        public void When_A_Player_Scores_Four_Times_Then_Game_Is_Over()
+        {
+            TennisGame game = new TennisGame();
+
+            game.Score(TennisPlayer.PlayerA);
+            game.Score(TennisPlayer.PlayerA);
+            game.Score(TennisPlayer.PlayerA);
+            game.Score(TennisPlayer.PlayerA);
+
+            bool isOver = game.IsGameOver;
+            Assert.That(isOver, Is.True);
+        }
+
+        [Test]
         public void PointsA_Player_A_Starts_With_Zero_Points()
         {
             TennisGame game = new TennisGame();

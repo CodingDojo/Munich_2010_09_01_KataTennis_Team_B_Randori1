@@ -58,7 +58,7 @@ namespace Dojo
 
         public void Score(TennisPlayer player)
         {
-            throw new NotImplementedException();
+            this.PointsB += 15;
         }
     }
 }

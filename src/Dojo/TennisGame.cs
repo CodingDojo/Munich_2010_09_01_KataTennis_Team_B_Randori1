@@ -19,7 +19,7 @@ namespace Dojo
         }
 
         [Test]
-        public void Test_Game_Starts_with_00()
+        public void PointsA_Player_A_Starts_With_Zero_Points()
         {
             TennisGame game = new TennisGame();
             Assert.AreEqual(0, game.PointsA);
@@ -31,6 +31,21 @@ namespace Dojo
             TennisGame game = new TennisGame();
             Assert.AreEqual(0, game.PointsB);
         }
+
+        [Test]
+        public void When_PlayerB_Scores_Starting_With_Zero_Then_PlayerB_Has_15()
+        {
+            TennisGame game = new TennisGame();
+
+            game.Score(TennisPlayer.PlayerB);
+
+            Assert.That(game.PointsB, Is.EqualTo(15));
+        }
+    }
+    public enum TennisPlayer
+    {
+        PlayerA,
+        PlayerB
     }
 
     public class TennisGame
@@ -40,5 +55,10 @@ namespace Dojo
         public int PointsB { get; set; }
 
         public int PointsA { get; set; }
+
+        public void Score(TennisPlayer player)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -121,19 +121,11 @@ namespace Dojo
             Assert.That(game.PointsA, Is.EqualTo(TennisScore.Advantage));
         }
 
-        [Test]
-        public void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantageA()
-        {
-            When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer.PlayerA);
-        }
+        
 
-        [Test]
-        public void When_PlayerA_has_40_and_PlayerB_has_40_PlayerA_scores_to_advantageB()
-        {
-            When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer.PlayerB);
-        }
-
-        private void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer player)
+        [TestCase(TennisPlayer.PlayerA)]
+        [TestCase(TennisPlayer.PlayerB)]
+        public void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer player)
         {
             TennisGame game = new TennisGame();
 

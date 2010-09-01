@@ -158,34 +158,40 @@ namespace Dojo
 
     public class TennisGame
     { 
-
         public bool IsGameOver { get; set; }
 
-        public Dictionary<TennisPlayer, TennisScore> Scores { get; set; }
+        private Dictionary<TennisPlayer, TennisScore> scores =
+            new Dictionary<TennisPlayer, TennisScore>()
+                {
+                    {TennisPlayer.PlayerA, TennisScore.Love},
+                    {TennisPlayer.PlayerB, TennisScore.Love}
+                };
 
-        public TennisScore PointsB { get; set; }
-        public TennisScore PointsA { get; set; }
+        public TennisScore PointsB 
+        {
+            get { return this.scores[TennisPlayer.PlayerB]; }
+        }
+
+        public TennisScore PointsA
+        {
+            get { return this.scores[TennisPlayer.PlayerA]; }
+        }
 
         public void Score(TennisPlayer player)
         {
+            TennisPlayer otherPlayer = TennisPlayer.PlayerA;
+
             if (player == TennisPlayer.PlayerA)
-            {
-                this.PointsA += 1;
+                otherPlayer = TennisPlayer.PlayerB;
 
-                if (this.PointsB != TennisScore.Forty &&
-                    this.PointsA == TennisScore.Advantage)
-                {
-                    this.PointsA = TennisScore.Game;
-                    this.IsGameOver = true;
-                }
-             }
-            else
+            this.scores[player] += 1;
+
+            if (this.scores[otherPlayer] != TennisScore.Forty &&
+                this.scores[player] == TennisScore.Advantage)
             {
-                this.PointsB += 1;
+                this.scores[player] = TennisScore.Game;
+                this.IsGameOver = true;
             }
-       
-
-             
         }
     }
 }

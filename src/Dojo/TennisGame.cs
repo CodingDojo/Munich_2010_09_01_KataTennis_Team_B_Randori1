@@ -154,10 +154,8 @@ namespace Dojo
                     this.PointsA == TennisScore.Advantage)
                 {
                     this.PointsA = TennisScore.Game;
-                }
-
-                if (PointsA == TennisScore.Game)
                     this.IsGameOver = true;
+                }
              }
        
 

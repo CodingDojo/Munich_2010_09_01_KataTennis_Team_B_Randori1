@@ -17,10 +17,22 @@ namespace Dojo
             bool isOver = game.IsGameOver;
             Assert.That(isOver, Is.False);
         }
+
+        [Test]
+        public void Test_Game_Starts_with_00()
+        {
+            TennisGame game = new TennisGame();
+            Assert.AreEqual(0, game.PointsA);
+            Assert.AreEqual(0, game.PointsB);
+        }
     }
 
     public class TennisGame
     {
         public bool IsGameOver { get; set; }
+
+        public object PointsB { get; set; }
+
+        public object PointsA { get; set; }
     }
 }

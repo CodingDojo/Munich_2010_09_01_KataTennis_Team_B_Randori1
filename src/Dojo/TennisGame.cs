@@ -46,6 +46,9 @@ namespace Dojo
             Assert.AreEqual(TennisScore.Love, game.PointsB);
         }
 
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////////////
+        /// </summary>
         [Test]
         public void When_PlayerB_Scores_Starting_With_Zero_Then_PlayerB_Has_15()
         {
@@ -203,5 +206,6 @@ namespace Dojo
         {
             return scores[player];
         }
+        ///////////////////////////////////////////////////////////////
     }
 }

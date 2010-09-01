@@ -122,23 +122,36 @@ namespace Dojo
         }
 
         [Test]
-        public void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantage()
+        public void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantageA()
+        {
+            When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer.PlayerA);
+        }
+        [Test]
+        public void When_PlayerA_has_40_and_PlayerB_has_40_PlayerA_scores_to_advantageB()
+        {
+            When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer.PlayerB);
+        }
+
+        private void When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer player)
         {
             TennisGame game = new TennisGame();
 
-            game.Score(TennisPlayer.PlayerA);
-            game.Score(TennisPlayer.PlayerA);
-            game.Score(TennisPlayer.PlayerA);
+            TennisPlayer otherPlayer = TennisPlayer.PlayerA;
+            if (player == TennisPlayer.PlayerA)
+                otherPlayer = TennisPlayer.PlayerB;
 
-            game.Score(TennisPlayer.PlayerB);
-            game.Score(TennisPlayer.PlayerB);
-            game.Score(TennisPlayer.PlayerB);
+            game.Score(player);
+            game.Score(player);
+            game.Score(player);
 
-            game.Score(TennisPlayer.PlayerB);
+            game.Score(otherPlayer);
+            game.Score(otherPlayer);
+            game.Score(otherPlayer);
 
-            Assert.That(game.PointsB, Is.EqualTo(TennisScore.Advantage));
+            game.Score(player);
+
+            Assert.That(game.Points(otherPlayer), Is.EqualTo(TennisScore.Advantage));
         }
-
     }
     public enum TennisPlayer
     {
@@ -192,6 +205,11 @@ namespace Dojo
                 this.scores[player] = TennisScore.Game;
                 this.IsGameOver = true;
             }
+        }
+
+        public TennisScore Points(TennisPlayer player)
+        {
+            return scores[player];
         }
     }
 }

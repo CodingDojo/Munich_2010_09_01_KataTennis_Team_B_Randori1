@@ -102,6 +102,24 @@ namespace Dojo
 
             Assert.That(game.PointsA, Is.EqualTo(TennisScore.Game));
         }
+
+        [Test]
+        public void When_PlayerA_has_40_and_PlayerB_has_40_PlayerA_scores_to_advantage()
+        {
+            TennisGame game = new TennisGame();
+
+            game.Score(TennisPlayer.PlayerA);
+            game.Score(TennisPlayer.PlayerA);
+            game.Score(TennisPlayer.PlayerA);
+
+            game.Score(TennisPlayer.PlayerB);
+            game.Score(TennisPlayer.PlayerB);
+            game.Score(TennisPlayer.PlayerB);
+
+            game.Score(TennisPlayer.PlayerA);
+
+            Assert.That(game.PointsA, Is.EqualTo(TennisScore.Advantage));
+        }
     }
     public enum TennisPlayer
     {

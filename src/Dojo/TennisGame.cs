@@ -157,9 +157,13 @@ namespace Dojo
                     this.IsGameOver = true;
                 }
              }
+            else
+            {
+                this.PointsB += 1;
+            }
        
 
-    this.PointsB += 1;
+             
         }
     }
 }

@@ -91,7 +91,7 @@ namespace Dojo
         }
 
         [Test]
-        public void When_PlayerA_scores_4times_PointsA_On_Game()
+        public void When_PlayerA_scores_4times_PointsA_Equals_Game()
         {
             TennisGame game = new TennisGame();
 
@@ -129,8 +129,10 @@ namespace Dojo
         public void Score(TennisPlayer player)
         {
             if (this.PointsA == TennisScore.Forty)
+            {
                 this.IsGameOver = true;
-
+                this.PointsA = TennisScore.Game;
+            }
             if (this.PointsA == TennisScore.Thirty)
                 this.PointsA = TennisScore.Forty;
             else

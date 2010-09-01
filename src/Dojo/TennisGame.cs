@@ -41,6 +41,16 @@ namespace Dojo
 
             Assert.That(game.PointsB, Is.EqualTo(15));
         }
+
+        [Test]
+        public void When_PlayerA_Scores_Starting_With_Zero_Then_PlayerA_Has_15()
+        {
+            TennisGame game = new TennisGame();
+
+            game.Score(TennisPlayer.PlayerA);
+
+            Assert.That(game.PointsA, Is.EqualTo(15));
+        }
     }
     public enum TennisPlayer
     {

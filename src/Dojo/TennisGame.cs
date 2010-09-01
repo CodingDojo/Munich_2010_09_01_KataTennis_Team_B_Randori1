@@ -23,6 +23,12 @@ namespace Dojo
         {
             TennisGame game = new TennisGame();
             Assert.AreEqual(0, game.PointsA);
+        }
+
+        [Test]
+        public void PointsB_Player_B_Starts_With_Zero_Points()
+        {
+            TennisGame game = new TennisGame();
             Assert.AreEqual(0, game.PointsB);
         }
     }

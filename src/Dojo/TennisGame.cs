@@ -126,6 +126,7 @@ namespace Dojo
         {
             When_PlayerB_has_40_and_PlayerA_has_40_PlayerB_scores_to_advantagePar(TennisPlayer.PlayerA);
         }
+
         [Test]
         public void When_PlayerA_has_40_and_PlayerB_has_40_PlayerA_scores_to_advantageB()
         {
@@ -148,7 +149,7 @@ namespace Dojo
             game.Score(otherPlayer);
             game.Score(otherPlayer);
 
-            game.Score(player);
+            game.Score(otherPlayer);
 
             Assert.That(game.Points(otherPlayer), Is.EqualTo(TennisScore.Advantage));
         }

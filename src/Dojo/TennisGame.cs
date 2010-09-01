@@ -31,8 +31,8 @@ namespace Dojo
     {
         public bool IsGameOver { get; set; }
 
-        public object PointsB { get; set; }
+        public int PointsB { get; set; }
 
-        public object PointsA { get; set; }
+        public int PointsA { get; set; }
     }
 }

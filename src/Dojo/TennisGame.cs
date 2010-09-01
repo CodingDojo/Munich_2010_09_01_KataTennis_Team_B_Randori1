@@ -128,14 +128,7 @@ namespace Dojo
 
         public void Score(TennisPlayer player)
         {
-            if (this.PointsA == TennisScore.Thirty)
-                this.PointsA = TennisScore.Forty;
-            else
-                this.PointsA += 1;
-            if (this.PointsA == TennisScore.Forty)
-            {
-                this.PointsA = TennisScore.Game;
-            }
+            this.PointsA += 1;
             if( PointsA == TennisScore.Game)
                 this.IsGameOver = true;
 

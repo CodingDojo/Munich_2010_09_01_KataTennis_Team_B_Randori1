@@ -106,6 +106,9 @@ namespace Dojo
 
         public void Score(TennisPlayer player)
         {
+            if (this.PointsA == 40)
+                this.IsGameOver = true;
+
             if (this.PointsA == 30)
                 this.PointsA = 40;
             else
